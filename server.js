@@ -13,9 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/user", userRoutes);
 
 //server
-const http = require('http');
+const https = require('https');
 const port = process.env.PORT || 5000; // Défaut à 3000 si en local
-const server = http.createServer((req, res) => {
+const server = https.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   res.end('Hello World\n');
