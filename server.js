@@ -9,18 +9,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//routes
+// routes
 app.use("/api/user", userRoutes);
 
-//server
-const https = require('https');
-const port = process.env.PORT || 5000; // Défaut à 3000 si en local
-const server = https.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World\n');
-});
-
-server.listen(port, () => {
+// server
+const port = process.env.PORT || 3000; // Utilisation de 3000 si PORT n'est pas défini
+console.log(`Port from environment: ${process.env.PORT}`);
+console.log(`Server will run on port: ${port}`);
+app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
