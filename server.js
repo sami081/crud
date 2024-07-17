@@ -13,9 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/user", userRoutes);
 
 // server
-const port = process.env.PORT || 3000; // Utilisation de 3000 si PORT n'est pas défini
-console.log(`Port from environment: ${process.env.PORT}`);
-console.log(`Server will run on port: ${port}`);
+const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
