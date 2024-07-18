@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // routes
 
-app.use("/api/user", userRoutes);
+app.use("/", userRoutes);
 
 // server
 const PORT = process.env.PORT || 3000;
