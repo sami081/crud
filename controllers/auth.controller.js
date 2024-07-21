@@ -7,7 +7,7 @@ const createToken =(id) => {
         expiresIn : maxAge
     })
 };
-
+//register
 module.exports.signUp = async (req, res)=> {
 const {name, email, birthday, phone, password} = req.body
 
@@ -20,6 +20,8 @@ catch (err) {
     res.status(400).send({ errors})
 }
 }
+
+//to log in
 
 module.exports.signIn = async(req,res)=> {
     const {email, password} = req.body
@@ -35,6 +37,8 @@ module.exports.signIn = async(req,res)=> {
     }
     
 }
+
+//Sign out
 module.exports.logout = async(req,res)=> {
     res.cookie("jwt", '', {maxAge:1});
     res.redirect('/')

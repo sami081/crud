@@ -1,11 +1,12 @@
 const UserModel = require("../models/user.model");
 const ObjectID = require("mongoose").Types.ObjectId;
 
+//see all users
 module.exports.getAllUsers = async (req, res) => {
   const users = await UserModel.find().select("-password");
   res.status(200).json(users);
 };
-
+//see one user
 module.exports.getOneUser = async (req, res) => {
     if (!ObjectID.isValid(req.params.id))
       return res.status(400).send("ID inconnu : " + req.params.id);
@@ -17,7 +18,7 @@ module.exports.getOneUser = async (req, res) => {
       console.log("erreur server");
     }
   };
-
+// modify one user
   module.exports.updateUser = async (req, res) => {
     if (!ObjectID.isValid(req.params.id))
         return res.status(400).send("ID inconnu : " + req.params.id);
@@ -31,7 +32,7 @@ module.exports.getOneUser = async (req, res) => {
       return res.status(404).json({ message: "Utilisateur non trouvé." });
     }
 
-    // Modification de la bio de l'utilisateur
+    // Modification du téléphone
     user.phone = phone;
 
     // Enregistrement des modifications
@@ -51,6 +52,8 @@ module.exports.getOneUser = async (req, res) => {
   }
     
   }
+
+  //delete one user
 
   module.exports.deleteOneUser = async (req, res, next) => {
     if (!ObjectID.isValid(req.params.id))
