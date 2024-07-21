@@ -24,7 +24,8 @@ const userSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
-      unique: true,
+      required: true,
+      
     },
     password: {
       type: String,
@@ -38,12 +39,24 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-//
+// cript le password a l' inscription
 
 userSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt();
   (this.password = await bcrypt.hash(this.password, salt)), next();
 });
+
+userSchema.statics.login = async function (email, password) {
+  const user = await this.findOne({ email });
+  if (user) {
+    const auth = await bcrypt.compare(password, user.password);
+    if (auth) {
+      return user;
+    }
+    throw Error("incorrect password");
+  }
+  throw Error("incorrect email");
+};
 
 const UserModel = mongoose.model("user", userSchema);
 
