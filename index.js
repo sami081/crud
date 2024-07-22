@@ -8,19 +8,10 @@ require("dotenv").config({ path: "./config/.env" });
 const connectDB = require("./config/db");
 connectDB();
 const corsOptions = {
-  origin: process.env.CLIENT_URL,
+  origin: 'https://crud-front-omega.vercel.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
-  allowedHeaders: [
-    "sessionId",
-    "Content-type",
-    "Origin",
-    "Accept",
-    "Authorization",
-    "Token",
-  ],
-  exposedHeaders: ["sessionId"],
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  preflightContinue: false,
+  optionsSuccessStatus: 204
 };
 
 app.use(cors(corsOptions));
