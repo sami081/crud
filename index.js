@@ -8,7 +8,7 @@ require("dotenv").config({ path: "./config/.env" });
 const connectDB = require("./config/db");
 connectDB();
 const corsOptions = {
-  origin: 'https://crud-front-omega.vercel.app',
+  origin:  'https://crud-front-ebon.vercel.app/',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204
