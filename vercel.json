@@ -12,5 +12,16 @@
         "dest": "/index.js"
       }
     ]
+    "headers": [
+        {
+            "source":"/(.*)",
+            "headers":[
+                {"key": "Acces-Control-Allow-Credentials", "value": "true"},
+                {"key": "Acces-Control-Allow-Origin", "value": "*"},
+                {"key": "Acces-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"},
+                {"key": "Acces-Control-Allow-Headers", "value": "X-CSRF-Token, X-Requested-With, Accept"},
+            ]
+        }
+    ]
   }
   
