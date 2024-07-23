@@ -21,6 +21,7 @@ app.use(cors({
   origin: 'https://crud-front-ebon.vercel.app', // URL de votre frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes HTTP autorisées
   allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
+  credentials: true // Permet les informations d'identification
 }));
 
 
