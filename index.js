@@ -7,23 +7,16 @@ const app = express();
 require("dotenv").config({ path: "./config/.env" });
 const connectDB = require("./config/db");
 connectDB();
+//cors
 const corsOptions = {
-  origin: process.env.CLIENT_URL,
+  origin:  'https://crud-front-ebon.vercel.app',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
-  allowedHeaders: [
-    "sessionId",
-    "Content-type",
-    "Origin",
-    "Accept",
-    "Authorization",
-    "Token",
-  ],
-  exposedHeaders: ["sessionId"],
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  preflightContinue: false,
+  optionsSuccessStatus: 204
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
