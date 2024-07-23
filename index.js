@@ -8,16 +8,20 @@ require("dotenv").config({ path: "./config/.env" });
 const connectDB = require("./config/db");
 connectDB();
 //cors
-const corsOptions = {
-  origin :process.env.CLIENT_URL,
-  credentials : true,
-  'allowedHeaders' : ['sessionId', 'Content-type'],
-  'exposedHeaders' : ['sessionId'],
-  'methods' : 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  'preflightContinue' : false
-}
+// const corsOptions = {
+//   origin :process.env.CLIENT_URL,
+//   credentials : true,
+//   'allowedHeaders' : ['sessionId', 'Content-type'],
+//   'exposedHeaders' : ['sessionId'],
+//   'methods' : 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   'preflightContinue' : false
+// }
 
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: 'https://crud-front-ebon.vercel.app', // URL de votre frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes HTTP autorisées
+  allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
+}));
 
 
 app.use(express.json());
